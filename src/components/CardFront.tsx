@@ -1,10 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import frontcardBackground from "../images/bg-card-front.png";
 
-const CardFront = () => {
+interface FormData {
+  name: string;
+  number: string;
+  month: string;
+  year: string;
+  code: string;
+}
+
+const CardFront = ({formData}: {formData: FormData}) => {
   const [cardNum, setCardNum] = useState<string>("0000 0000 0000 0000");
   const [name, setName] = useState<string>("Khant Nyar Ko Ko");
-  const [date, setDate] = useState<string>("00/00");
+  const [month, setMonth] = useState<string>("00");
+  const [year, setYear] = useState<string>("00");
+
+  useEffect(() => {
+    if(formData) {
+      setCardNum(formData.number || "0000 0000 0000 0000");
+      setName(formData.name || "Khant Nyar Ko Ko" );
+      setMonth(formData.month || "00");
+      setYear(formData.year || "00");
+    }
+  },[formData])
+  
   return (
     <div
       className="bg-cover bg-center w-[350px] h-[200px] rounded-lg absolute top-[180px] left-[210px] flex flex-col gap-14 justify-center shadow-lg"
@@ -20,12 +39,12 @@ const CardFront = () => {
             {cardNum}
           </h3>
         </div>
-        <div className=" flex gap-20">
-          <p className=" text-white text-sm font-space-grotesk ms-8 ">
+        <div className=" flex gap-10">
+          <p className=" text-white text-sm font-space-grotesk ms-8 w-[180px] ">
             {name}
           </p>
           <p className=" text-white text-sm font-space-grotesk ms-8 ">
-            {date}
+            {month}/{year}
           </p>
         </div>
       </div>

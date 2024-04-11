@@ -1,6 +1,15 @@
 import IconTick from "./Tick";
 
-const ThankCard = () => {
+interface Props {
+  complete : (confirm : boolean) => void
+}
+
+const ThankCard : React.FC<Props> = ({complete}) => {
+
+  const handleContinue = () => {
+    complete(false);
+  }
+
   return (
     <div className=" flex flex-col justify-center items-center gap-7">
       <div className=" w-16 h-16 rounded-full bg-gradient-to-b from-secondaryColor-start to-secondaryColor-end text-center flex justify-center items-center">
@@ -14,7 +23,7 @@ const ThankCard = () => {
           We've added your card details
         </p>
       </div>
-      <button className=" w-[300px] bg-customColor mt-2 px-4 py-3 rounded text-white font-space-grotesk text-sm font-space-grotesk">
+      <button onClick={handleContinue} className=" w-[300px] bg-customColor mt-2 px-4 py-3 rounded text-white font-space-grotesk text-sm font-space-grotesk">
         Continue
       </button>
     </div>
