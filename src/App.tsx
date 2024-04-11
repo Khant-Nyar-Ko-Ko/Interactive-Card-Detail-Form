@@ -1,9 +1,9 @@
-import InputForm from "./components/InputForm"
+import MainPage from "./pages/MainPage"
 
 const App = () => {
   return (
     <div className=" h-screen">
-     <InputForm/>
+    <MainPage/>
     </div>
   )
 }
