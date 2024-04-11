@@ -1,7 +1,10 @@
+import InputForm from "./components/InputForm"
 
 const App = () => {
   return (
-    <div>App</div>
+    <div className=" h-screen">
+     <InputForm/>
+    </div>
   )
 }
 
