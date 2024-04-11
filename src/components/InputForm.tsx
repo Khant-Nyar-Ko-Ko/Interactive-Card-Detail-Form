@@ -21,6 +21,15 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
     code: ''
   });
 
+  const [nameError, setNameError] = useState('');
+  const [numError, setNumError] = useState('');
+  const [monthError, setMonthError] = useState('');
+  const [yearError, setYearError] = useState('');
+  const [codeError, setCodeError] = useState('');
+
+
+
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
    const {name, value } = e.target;
    setFormData((prevData) => ({
@@ -30,10 +39,37 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
    onDataChange(formData);
   }
 
-  const handleConfirm = () => {
+  const handleConfirm = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    e.preventDefault();
+    if(!formData.name){
+      setNameError("Name is required");
+    return;
+    }
+    if(!formData.number || !/^\d*$/.test(formData.number)){
+      setNumError("Number is invalid");
+    return;
+
+    }
+    if(!formData.month ||  /^(0?[1-9]|1[0-2])$/.test(formData.month)){
+      setMonthError("Month is required");
+    return;
+    }
+    if(!formData.year || /^(0?[0-9]|[1-9][0-9]?)$/.test(formData.year)){
+      setYearError("Year is required");
+      return;
+    }
+    if(!formData.code || !/^\d*$/.test(formData.code)){
+      setCodeError("Code is invalid");
+    return;
+
+    }
+    setNameError('');
+    setNumError('');
+    setMonthError('');
+    setYearError('');
+    setCodeError('');
     complete(true);
   }
-
 
   return (
     <div>
@@ -54,6 +90,7 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
             value={formData?.name}
             onChange={handleChange}
           />
+          {nameError && (<span className=" text-red-500 text-sm">{nameError}</span>)}
         </div>
         <div className=" flex flex-col space-y-2">
           <label
@@ -71,6 +108,8 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
             value={formData?.number}
             onChange={handleChange}
           />
+          {/* {parseInt(formData.number) < 1  ? <span className=" text-red-500 text-sm">Number is invalid</span> : null} */}
+          {numError && <span className=" text-red-500 text-sm">Number is invalid</span>}
         </div>
         <div className=" flex gap-3">
           <div className=" flex flex-col space-y-2">
@@ -90,6 +129,8 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
                 value={formData?.month}
                 onChange={handleChange}
               />
+              {monthError && (<span className=" text-red-500 text-sm">*</span>)}
+
               <input
                 type="number"
                 id="year"
@@ -98,7 +139,8 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
                 placeholder="YY"
                 value={formData?.year}
                 onChange={handleChange}
-              />
+                />
+                {yearError && (<span className=" text-red-500 text-sm">*</span>)}
             </div>
           </div>
           <div className=" flex flex-col space-y-2">
@@ -117,6 +159,7 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
               value={formData?.code}
               onChange={handleChange}
             />
+                {codeError && (<span className=" text-red-500 text-sm">*</span>)}
           </div>
         </div>
         <button onClick={handleConfirm} className=" w-[300px] bg-customColor mt-2 px-4 py-3 rounded text-white font-space-grotesk text-sm font-space-grotesk">

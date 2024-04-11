@@ -22,12 +22,14 @@ const MainPage = () => {
       year: '',
       code: ''
     });
-    
+
+
     const handleDataChange = (data : FormData) => {
       setFormData(data);
     }
 
     const handleComplete = (confirm : boolean) => {
+      
       setIsComplete(confirm)
       setFormData({
         name: '',
