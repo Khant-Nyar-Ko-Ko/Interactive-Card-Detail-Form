@@ -50,11 +50,11 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
     return;
 
     }
-    if(!formData.month ||  /^(0?[1-9]|1[0-2])$/.test(formData.month)){
+    if(!formData.month ||  !/^\d*$/.test(formData.month)){
       setMonthError("Month is required");
-    return;
+      return;
     }
-    if(!formData.year || /^(0?[0-9]|[1-9][0-9]?)$/.test(formData.year)){
+    if(!formData.year || !/^\d*$/.test(formData.year)){
       setYearError("Year is required");
       return;
     }
@@ -108,7 +108,6 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
             value={formData?.number}
             onChange={handleChange}
           />
-          {/* {parseInt(formData.number) < 1  ? <span className=" text-red-500 text-sm">Number is invalid</span> : null} */}
           {numError && <span className=" text-red-500 text-sm">Number is invalid</span>}
         </div>
         <div className=" flex gap-3">
