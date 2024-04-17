@@ -26,24 +26,24 @@ const CardFront = ({formData}: {formData: FormData}) => {
   
   return (
     <div
-      className="bg-cover bg-center w-[350px] h-[200px] rounded-lg absolute top-[180px] left-[210px] flex flex-col gap-14 justify-center shadow-lg"
+      className="bg-cover bg-center  w-[250px] md:w-[350px]  h-[150px] z-10 md:h-[200px] rounded-lg absolute top-[100px] md:top-[180px] left-[30px] md:left-[210px] flex flex-col gap-10 md:gap-14 justify-center shadow-lg"
       style={{ backgroundImage: `url(${frontcardBackground})` }}
     >
-      <div className=" flex mx-8  gap-3 items-center">
-        <div className="w-8 h-8  bg-white rounded-full"></div>
-        <div className="w-4 h-4  border rounded-full"></div>
+      <div className=" flex mx-3 md:mx-8 gap-1 md:gap-3 items-center">
+        <div className="w-5 md:w-8 h-5 md:h-8  bg-white rounded-full"></div>
+        <div className="w-2 md:w-4 h-2 md:h-4  border rounded-full"></div>
       </div>
-      <div className=" flex flex-col gap-5">
+      <div className=" flex flex-col gap-2 md:gap-5">
         <div>
-          <h3 className="text-2xl ms-8 text-white font-space-grotesk">
+          <h3 className="md:text-2xl ms-3 md:ms-8 text-white font-space-grotesk">
             {cardNum}
           </h3>
         </div>
-        <div className=" flex gap-10">
-          <p className=" text-white text-sm font-space-grotesk ms-8 w-[180px] ">
+        <div className=" flex gap-3 md:gap-10">
+          <p className="  text-white text-sm font-space-grotesk ms-3 md:ms-8 w-[180px] ">
             {name}
           </p>
-          <p className=" text-white text-sm font-space-grotesk ms-8 ">
+          <p className=" text-white text-sm font-space-grotesk ms-0 md:ms-8">
             {month}/{year}
           </p>
         </div>

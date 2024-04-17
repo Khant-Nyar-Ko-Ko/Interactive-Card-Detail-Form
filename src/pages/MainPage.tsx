@@ -44,15 +44,15 @@ const MainPage = () => {
     
 
   return (
-    <div className=" w-full h-screen grid grid-cols-3">
+    <div className=" md:w-full min-h-screen md:grid grid-cols-3">
       <div
-        className=" col-span-1 bg-cover bg-center flex justify-center items-center relative"
+        className=" col-span-1 bg-cover bg-center h-[200px] md:h-screen flex justify-center items-center md:relative"
         style={{ backgroundImage: `url(${backgroundImage})` }}
       >
         <CardFront formData={formData}/>
         <CardBack formData={formData}/>
       </div>
-      <div className=" col-span-2 flex justify-center items-center">
+      <div className=" col-span-2 mt-28 md:mt-0 flex justify-center items-center">
        {isComplete ? <ThankCard complete = {handleComplete}/> : <InputForm onDataChange= {handleDataChange} complete = {handleComplete}/>}
       </div>
     </div>

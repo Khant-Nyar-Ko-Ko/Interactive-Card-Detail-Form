@@ -17,7 +17,7 @@ const CardBack = ({formData} : {formData : FormData}) => {
       setCode(formData.code || "000")
     },[formData])
   return (
-    <div className="bg-cover bg-center w-[350px] h-[200px] rounded-lg absolute top-[400px] left-[300px] flex flex-col justify-center items-end px-10 shadow-lg"
+    <div className="bg-cover bg-center w-[250px] md:w-[350px]  h-[150px] md:h-[200px] rounded-lg absolute top-[15px] md:top-[400px] left-[70px] md:left-[300px] flex flex-col justify-center items-end px-10 shadow-lg"
     style={{ backgroundImage: `url(${backcardBackground})` }}>
         <p className=" text-sm text-white font-space-grotesk mb-1">{code}</p>
     </div>
