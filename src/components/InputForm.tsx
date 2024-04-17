@@ -45,11 +45,11 @@ const InputForm : React.FC<Props>= ({onDataChange, complete}) => {
       setNameError("Name is required");
     return;
     }
-    if(!formData.number || !/^\d*$/.test(formData.number)){
-      setNumError("Number is invalid");
-    return;
+    // if(!formData.number || !/^\d*$/.test(formData.number)){
+    //   setNumError("Number is invalid");
+    // return;
 
-    }
+    // }
     if(!formData.month ||  !/^\d*$/.test(formData.month)){
       setMonthError("Month is required");
       return;
